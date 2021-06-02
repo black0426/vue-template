@@ -1,6 +1,10 @@
 <template>
   <div class="search">
-    <!-- <el-input v-model="searchModel" placeholder="搜索详情呀"></el-input> -->
+    <el-input
+      v-model.trim="searchModel"
+      placeholder="搜索详情呀"
+      @input="clickInput"
+    ></el-input>
     <HelloWorld :msg="msg" @test="clickTest"> </HelloWorld>
     <div>{{ testData }}1123</div>
   </div>
@@ -25,9 +29,11 @@ export default {
   computed: {},
   methods: {
     clickTest (data) {
-      console.log(data)
       this.testData = data
       console.log(this.testData, 'this.testData')
+    },
+    clickInput () {
+      console.log('触发clickInput') //在 Input 值改变时触发
     }
   }
 }
