@@ -15,11 +15,6 @@ const router = new Router({
       component: () => import('../views/calendar')
     },
     {
-      path: '/admin',
-      name: 'admin',
-      component: () => import('../views/admin')
-    },
-    {
       path: '/search',
       name: 'search',
       component: () => import('../views/search')
