@@ -2,34 +2,49 @@
 
 ## Project setup
 
+### 安装依赖
+
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### 本地启动项目
 
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+### 打包构建
 
 ```
 npm run build
 ```
 
-### Lints and fixes files
+### 检查和处理
 
 ```
 npm run lint
 ```
 
-### demo
+## 目录结构
 
-```
-demo  集合
-```
+<!--
+按照此例子写目录：
 
-### Customize configuration
+├─dist                      // 编译之后的项目文件
+├─src                       // 开发目录
+│  ├─assets                 // 静态资源
+│     ├─less		        // 公共less
+│     ├─img					// 图片资源
+│  ├─components             // 组件
+│  ├─pages                  // 页面，根据路由结构划分
+│  ├─utils                  // 工具库
+│  ├─App.vue                // 启动页面，最外层容器组件
+│  ├─main.js                // 入口脚本
+│  babel.config.js          // babel 配置文件
+│  vue.config.js            // vue 自定义配置，与 webpack 配置相关
+│  package.json             // 项目配置
+│  README.md                // 项目说明
 
-See [Configuration Reference](https://cli.vuejs.org/config/).
+仿照地址：https://github.com/godbasin/vue-ebook/tree/vue-sourcecode/12/1-element-manage-app
+-->
