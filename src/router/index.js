@@ -15,6 +15,16 @@ const router = new Router({
       component: () => import('../views/calendar')
     },
     {
+      path: '/lottery',
+      name: 'lottery',
+      component: () => import('../views/lottery')
+    },
+    {
+      path: '/fuzzySearch',
+      name: 'fuzzySearch',
+      component: () => import('../views/fuzzySearch')
+    },
+    {
       path: '/search',
       name: 'search',
       component: () => import('../views/search')
