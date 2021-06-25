@@ -1,3 +1,4 @@
+import Vue from 'vue'
 // 防抖函数
 Vue.prototype.$debounce = function () {
   let timer = null
