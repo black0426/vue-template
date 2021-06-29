@@ -25,6 +25,11 @@ const router = new Router({
       component: () => import('../views/fuzzySearch')
     },
     {
+      path: '/sort',
+      name: 'sort',
+      component: () => import('../views/sort')
+    },
+    {
       path: '/search',
       name: 'search',
       component: () => import('../views/search')

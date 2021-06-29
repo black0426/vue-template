@@ -1,5 +1,13 @@
 <template>
   <div class="search">
+    <!-- 
+      <input v-model="searchText">
+      等价于：
+      <input
+        v-bind:value="searchText"
+        v-on:input="searchText = $event.target.value"
+      >
+     -->
     <input type="text" v-focus />
     <el-input
       v-focus
