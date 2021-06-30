@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>JS + CSS Clock</title>
-</head>
-<body>
-
-
+  <head>
+    <meta charset="UTF-8" />
+    <title>JS + CSS Clock</title>
+  </head>
+  <body>
     <div class="clock">
       <div class="clock-face">
         <div class="hand hour-hand"></div>
@@ -15,60 +13,139 @@
       </div>
     </div>
 
+    <style>
+      html {
+        background: #018ded url(https://unsplash.it/1500/1000?image=881&blur=5);
+        background-size: cover;
+        font-family: 'helvetica neue';
+        text-align: center;
+        font-size: 10px;
+      }
 
-  <style>
-    html {
-      background: #018DED url(https://unsplash.it/1500/1000?image=881&blur=5);
-      background-size: cover;
-      font-family: 'helvetica neue';
-      text-align: center;
-      font-size: 10px;
-    }
+      body {
+        margin: 0;
+        font-size: 2rem;
+        display: flex;
+        flex: 1;
+        min-height: 100vh;
+        align-items: center;
+      }
 
-    body {
-      margin: 0;
-      font-size: 2rem;
-      display: flex;
-      flex: 1;
-      min-height: 100vh;
-      align-items: center;
-    }
+      .clock {
+        width: 30rem;
+        height: 30rem;
+        border: 20px solid white;
+        border-radius: 50%;
+        margin: 50px auto;
+        position: relative;
+        padding: 2rem;
+        box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1), inset 0 0 0 3px #efefef,
+          inset 0 0 10px black, 0 0 10px rgba(0, 0, 0, 0.2);
+      }
 
-    .clock {
-      width: 30rem;
-      height: 30rem;
-      border: 20px solid white;
-      border-radius: 50%;
-      margin: 50px auto;
-      position: relative;
-      padding: 2rem;
-      box-shadow:
-        0 0 0 4px rgba(0,0,0,0.1),
-        inset 0 0 0 3px #EFEFEF,
-        inset 0 0 10px black,
-        0 0 10px rgba(0,0,0,0.2);
-    }
+      .clock-face {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        transform: translateY(
+          -3px
+        ); /* account for the height of the clock hands */
+      }
 
-    .clock-face {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      transform: translateY(-3px); /* account for the height of the clock hands */
-    }
+      .hand {
+        width: 50%;
+        height: 6px;
+        background: black;
+        position: absolute;
+        top: 50%;
+        transform-origin: 100%;
+        transform: rotate(90deg);
+        transition: all 0.05s;
+        /* 指针抖动效果 */
+        transition-timing-function: cubic-bezier(0.1, 2.7, 0.58, 1);
+        /* 
+          transform(CSStransform属性允许你旋转，缩放，倾斜或平移给定元素)  
+          详情查看：MDN
 
-    .hand {
-      width: 50%;
-      height: 6px;
-      background: black;
-      position: absolute;
-      top: 50%;
-    }
+          transition (transition属性可以被指定为一个或多个 CSS 属性的过渡效果)
+          CSS 属性是 
+          transition-property，
+          transition-duration，
+          transition-timing-function 
+          transition-delay 
+          的一个简写属性。
+          详情查看：MDN
 
-  </style>
+          translate
+          CSS 属性 translate 允许你单独声明平移变换，并独立于 transform 属性
+           详情查看：MDN
+        */
+      }
+    </style>
 
-  <script>
+    <script>
+      // //获取时分秒的dom
+      // const secondHand = document.querySelector('.second-hand')
+      // const minHand = document.querySelector('.min-hand')
+      // const hourHand = document.querySelector('.hour-hand')
 
+      // function setDate () {
+      //   const now = new Date()
+      //   //获取现在的秒
+      //   const seconds = now.getSeconds()
+      //   const secondsDesign = (seconds / 60) * 360 + 90
+      //   secondHand.style.transform = `rotate(${secondsDesign}deg)`
+      //   //获取现在的分
+      //   const mins = now.getMinutes()
+      //   const minsDesign = (mins / 60) * 360 + (seconds / 60) * 6 + 90
+      //   minHand.style.transform = `rotate(${minsDesign}deg)`
 
-  </script>
-</body>
+      //   //获取现在的时
+      //   const hour = now.getHours()
+      //   const hourDesign = (hour / 12) * 360 + (mins / 60) * 30 + 90
+      //   hourHand.style.transform = `rotate(${hourDesign}deg)`
+      // }
+
+      // //定时器
+      // setInterval(setDate, 1000)
+
+      // setDate()
+
+      // 改进版本
+      const secondHand = document.querySelector('.second-hand')
+      const minHand = document.querySelector('.min-hand')
+      const hourHand = document.querySelector('.hour-hand')
+
+      let secondDeg = 0,
+        minDeg = 0,
+        hourDeg = 0
+
+      function initDate () {
+        const date = new Date()
+        const second = date.getSeconds()
+        secondDeg = 90 + (second / 60) * 360
+        const min = date.getMinutes()
+        minDeg = 90 + (min / 60) * 360 + (second / 60 / 60) * 360
+        const hour = date.getHours()
+        hourDeg =
+          90 +
+          (hour / 12) * 360 +
+          (min / 60 / 12) * 360 +
+          (second / 60 / 60 / 12) * 360
+      }
+
+      function updateDate () {
+        secondDeg += (1 / 60) * 360
+        minDeg += (1 / 60 / 60) * 360
+        hourDeg += 1 / 60 / 60 / 12
+
+        secondHand.style.transform = `rotate(${secondDeg}deg)`
+        minHand.style.transform = `rotate(${minDeg}deg)`
+        hourHand.style.transform = `rotate(${hourDeg}deg)`
+      }
+
+      initDate()
+      setInterval(updateDate, 1000)
+    </script>
+  </body>
 </html>
