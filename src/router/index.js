@@ -7,8 +7,8 @@ const router = new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: () => import('@/views/home')
+      name: 'Home',
+      component: () => import('@/views/Home')
     },
     {
       path: '/calendar',
