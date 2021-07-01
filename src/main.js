@@ -4,10 +4,11 @@ import App from './App.vue'
 
 import axios from 'axios'
 
-import { Input, Button } from 'element-ui'
+import './plugins/element.js'
+// import { Input, Button } from 'element-ui'
 
-Vue.use(Input)
-Vue.use(Button)
+// Vue.use(Input)
+// Vue.use(Button)
 
 Vue.config.productionTip = false
 
