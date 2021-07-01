@@ -5,6 +5,7 @@ import App from './App.vue'
 import axios from 'axios'
 
 import './plugins/element.js'
+import '@/assets/vue.css'
 // import { Input, Button } from 'element-ui'
 
 // Vue.use(Input)
