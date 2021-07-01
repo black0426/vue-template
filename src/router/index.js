@@ -7,32 +7,33 @@ const router = new Router({
   routes: [
     {
       path: '/',
-      redirect: '/calendar'
+      name: 'home',
+      component: () => import('@/views/home')
     },
     {
       path: '/calendar',
       name: 'calendar',
-      component: () => import('../views/calendar')
+      component: () => import('@/views/calendar')
     },
     {
       path: '/lottery',
       name: 'lottery',
-      component: () => import('../views/lottery')
+      component: () => import('@/views/lottery')
     },
     {
       path: '/fuzzySearch',
       name: 'fuzzySearch',
-      component: () => import('../views/fuzzySearch')
+      component: () => import('@/views/fuzzySearch')
     },
     {
       path: '/sort',
       name: 'sort',
-      component: () => import('../views/sort')
+      component: () => import('@/views/sort')
     },
     {
       path: '/search',
       name: 'search',
-      component: () => import('../views/search')
+      component: () => import('@/views/search')
     }
   ]
 })
