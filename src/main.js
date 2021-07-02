@@ -6,12 +6,16 @@ import axios from 'axios'
 
 import './plugins/element.js'
 import '@/assets/vue.css'
+import moment from 'moment'
+import tab from '@/utils/tab'
 // import { Input, Button } from 'element-ui'
 
 // Vue.use(Input)
 // Vue.use(Button)
 
 Vue.config.productionTip = false
+Vue.prototype.$moment = moment
+Vue.prototype.$tab = tab
 
 import router from './router'
 
