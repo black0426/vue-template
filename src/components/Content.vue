@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="topic" v-for="item in list" :key="item.id">
-      <div @click="goAvatar">
+      <div @click="goAvatar(item.author)">
         <img
           :src="item.author.avatar_url | imgCheck"
           @error="imgErr(item.author.avatar_url)"
@@ -15,7 +15,7 @@
       <el-tag :type="$tab[item.tab] && $tab[item.tab].type">
         {{ item.tab ? $tab[item.tab] && $tab[item.tab].name : '无分类' }}
       </el-tag>
-      <div class="title" @click="goTopic">
+      <div class="title" @click="goTopic(item.id)">
         {{ item.title }}
       </div>
       <span class="time">
@@ -44,16 +44,19 @@ export default {
     imgErr (url) {
       console.log(url)
     },
-    goAvatar () {
+    goAvatar (params) {
+      console.log(params, 'params')
+      console.log(this.loginname)
       this.$router.push({
-        path: '/user/',
-        query: { id: this.author.loginname }
+        path: '/user/' + params.loginname
+        // query: { id: params.loginname }
       })
     },
-    goTopic () {
+    goTopic (params) {
+      console.log(params)
       this.$router.push({
-        path: '/topic/',
-        query: { id: this.id }
+        path: '/topic/' + params
+        // query: { id: params }
       })
     }
   },
