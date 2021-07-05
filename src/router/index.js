@@ -11,6 +11,16 @@ const router = new Router({
       component: () => import('@/views/Home')
     },
     {
+      path: '/topic/:id',
+      name: 'topic',
+      component: () => import('@/views/Topic')
+    },
+    {
+      path: '/user/:id',
+      name: 'user',
+      component: () => import('@/views/User')
+    },
+    {
       path: '/calendar',
       name: 'calendar',
       component: () => import('@/views/calendar')
