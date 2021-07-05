@@ -92,6 +92,7 @@ export default {
         tab: this.tab
       }).then(res => {
         this.list = res.data
+        console.log(res.data, '112312')
         this.limit = this.limit + 10
 
         const store = this.store
