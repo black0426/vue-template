@@ -13,24 +13,24 @@
           &nbsp;•&nbsp;
         </span>
         作者：
-        <div @click="goTopic">
+        <a>
           {{ topic.loginname }}
-        </div>
+        </a>
         &nbsp;•&nbsp;
         <span> {{ topic.visit_count }}次浏览&nbsp;•&nbsp;</span>
         <span>
           来自:
           {{ $tab[topic.tab] && $tab[topic.tab].name }}
         </span>
-        <Divider />
-        <div class="content" v-html="topic.content"></div>
-        <Reply :data="topic.replies" />
       </div>
-      <div class="right">
-        <ProfilePanel :loginname="topic.loginname" />
-        <OtherTopic />
-        <RecentReply />
-      </div>
+      <Divider />
+      <div class="content" v-html="topic.content"></div>
+      <Reply :data="topic.replies" />
+    </div>
+    <div class="right">
+      <ProfilePanel :loginname="topic.loginname" />
+      <OtherTopic />
+      <RecentReply />
     </div>
   </div>
 </template>
@@ -48,6 +48,10 @@ export default {
       topic: {}
     }
   },
+  beforeRouteUpdate (to, from, next) {
+    this.fetchData(to.params.id)
+    next()
+  },
   components: {
     Divider,
     OtherTopic,
@@ -55,7 +59,9 @@ export default {
     RecentReply,
     Reply
   },
-  created () {},
+  created () {
+    this.fetchData(this.$route.params.id)
+  },
   computed: {},
   methods: {
     /**
