@@ -1,6 +1,6 @@
 <template>
   <div class="panel">
-    <div class="user" @click="goLoginname">
+    <div class="user">
       <img :src="user.avatar_url" alt="用户头像" />
       <span>{{ user.loginname }}</span>
     </div>
@@ -16,7 +16,7 @@
       </a>
     </div>
     <div>
-      注册事件：
+      注册时间：
       {{
         $moment(user.create_at, 'YYYY-MM-DD')
           .startOf('day')
@@ -89,7 +89,7 @@ export default {
   color: black;
   padding: 20px;
   box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
-  > a {
+  > div {
     display: flex;
     align-items: center;
     img {
