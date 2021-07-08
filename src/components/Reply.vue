@@ -5,14 +5,14 @@
       >回复
     </div>
     <div v-for="(reply, index) in data" :key="reply.id">
-      <a>
+      <a @click="skip(reply.author)">
         <img :src="reply.author && reply.author.avatar_url" alt="头像" />
       </a>
       <div>
         <div class="info">
           <div>
             <span>{{ index + 1 }}楼&nbsp;</span>
-            <a>
+            <a @click="skip(reply.author)">
               {{ reply.author.loginname }}
             </a>
             <span>
@@ -53,7 +53,11 @@ export default {
   },
   created () {},
   computed: {},
-  methods: {}
+  methods: {
+    skip (params) {
+      this.$router.push({ path: '/user/' + params.loginname })
+    }
+  }
 }
 </script>
 <style lang="less" scoped>
