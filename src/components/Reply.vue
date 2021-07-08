@@ -1,8 +1,8 @@
 <template>
   <div class="reply">
     <div>
-      <span>{{ data.length }}</span
-      >&nbsp;回复
+      <span style="margin-right:4px">{{ data.length }}</span
+      >回复
     </div>
     <div v-for="(reply, index) in data" :key="reply.id">
       <a>
@@ -16,7 +16,6 @@
               {{ reply.author.loginname }}
             </a>
             <span>
-              &nbsp;
               {{
                 $moment(reply.create_at, 'YYYY-MM-DD')
                   .startOf('day')

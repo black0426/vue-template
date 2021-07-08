@@ -7,11 +7,7 @@
     <div>积分：{{ user.score }}</div>
     <div>
       Github:
-      <a
-        href='"https://github.com/"+user.githubUsername'
-        target="_black"
-        rel="nofollow noopener noreferrer"
-      >
+      <a>
         {{ user.githubUsername }}
       </a>
     </div>

@@ -100,7 +100,7 @@ export default {
     margin: 0;
   }
   span.time {
-    width: 70px;
+    min-width: 70px;
     text-align: right;
   }
 }
