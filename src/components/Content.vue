@@ -15,9 +15,9 @@
       <el-tag :type="$tab[item.tab] && $tab[item.tab].type">
         {{ item.tab ? $tab[item.tab] && $tab[item.tab].name : '无分类' }}
       </el-tag>
-      <div class="title" @click="goTopic(item.id)">
+      <a class="title" @click="goTopic(item.id)">
         {{ item.title }}
-      </div>
+      </a>
       <span class="time">
         {{
           $moment(item.last_reply_at, 'YYYY-MM-DD')

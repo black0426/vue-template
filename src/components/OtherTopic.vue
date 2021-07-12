@@ -24,7 +24,7 @@
             }}
           </span>
         </div>
-        <Divider class="inside-divider" />
+        <!-- <Divider class="inside-divider" /> -->
       </div>
     </template>
   </div>

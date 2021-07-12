@@ -1,6 +1,8 @@
 <template>
   <div class="topic">
     <div class="left">
+      <!-- <div>Topic {{ $route.params.id }}</div>-->
+      <div>Topic-{{ id }}</div>
       <div class="title" v-html="topic.title"></div>
       <div class="info">
         <span>
@@ -43,6 +45,7 @@ import RecentReply from '@/components/RecentReply'
 import Reply from '@/components/Reply'
 export default {
   name: 'Topic',
+  props: ['id'],
   data () {
     return {
       topic: {}
